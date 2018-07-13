@@ -73,7 +73,7 @@
 3. separator 迭代之间的分隔符  
 4. index 在迭代过程中，每次迭代到的位置  
 5. open 该语句以什么开始
-6. close 该语句以什么开始
+6. close 该语句以什么开始  
 	
 	<insert id="batchInsert" parameterType="java.util.List">
 		insert into
