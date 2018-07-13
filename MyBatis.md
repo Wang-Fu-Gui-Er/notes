@@ -1,26 +1,25 @@
-#MyBatis
+#MyBatis#
 
-<mark>指定命名空间<mark>
+<mark>指定命名空间</mark>
 	
 	<mapper namespace=“com.**.**.***Mapper”>
 	</mapper>
-<mark>原型模型<mark>
+<mark>原型模型</mark>
 	
 	<resultMap id=“BaseResultMap” type=“com.**.**.**.**Po”>//对象关系映射
 		<id column=“表中字段名” property=“实体中对应属性名” jdbcType=“BIGINT”/>	//id标记主键字段
 		//result标记其他字段，jdbcType指名类型
 		<result column=“表中字段名” property=“实体中对应属性名” jdbcType=“TIMESTAMP”/>  
 	</resultMap>
-<mark>SQL片段<mark>
+<mark>SQL片段</mark>
 	
 	<sql id=“Base_Column_List”> //sql片段，<include>标签通过 id 引用
 		id, name, sex, address
-        </sql>
-<mark>查询标签<mark>  
-<mark>id 与Mapper接口方法同名<mark>  
-<mark>resultMap 出参类型<mark>  
-<mark>parameterType：入参类型<mark>  
-<mark><mark>
+    </sql>
+<mark>查询标签</mark>  
+1. id 与Mapper接口方法同名  
+2. resultMap 出参类型  
+3. parameterType：入参类型  
 
 	<select id=“selectByPrimaryKey” resultMap=“BaseResultMap” parameterType=“java.lang.Long”>
 		select
@@ -30,14 +29,17 @@
 		order by field_name desc
 		limit 1
         </select>
-<mark>删除标签<mark>
+<mark>删除标签</mark>
         
 	<delete id=“” parameterType=“”>
 		delete from table_name 
 		where id = #{id,jdbcType=BIGINT}
 		limit 1
 	</delete>
-<mark>插入标签<mark>
+<mark>插入标签</mark>  
+1. useGeneratedKeys， keyProperty：把自增字段赋值到对应属性  
+2. trim进行过滤设置，prefix前缀，suffix后缀，suffixOverrides后缀忽略  
+3. if 判断，test是判断的内容
 	
 	<insert id=“” parameterType=“com.**.**.**Po” useGeneratedKeys=“true” keyProperty=“id”>
 		insert into table_name
@@ -65,3 +67,43 @@
 		</trim>
 	</insert>
 	
+<mark>批量增加</mark>  
+1. collection 集合类型  
+2. item 遍历元素的别名  
+3. separator 迭代之间的分隔符  
+4. index 在迭代过程中，每次迭代到的位置  
+5. open 该语句以什么开始
+6. close 该语句以什么开始
+	
+	<insert id="batchInsert" parameterType="java.util.List">
+		insert into
+		table_name(name,sex,address)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		</foreach>
+	</insert>
+
+
+
+To be continued......
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
