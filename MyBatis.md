@@ -82,28 +82,4 @@
 		<foreach collection="list" item="item" index="index" separator=",">
 		</foreach>
 	</insert>
-
-
-
 To be continued......
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
